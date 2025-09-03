@@ -10,6 +10,8 @@ import Administrador from "./administrador.js";
 import ProductoAdmin from "./productoAdministrador.js";
 import CuponDescuento from "./cuponDescuento.js";
 import Mensaje from "./mensajes.js";
+import MetodoEnvio from "./metodoEnvio.js";
+import MetodoPago from "./metodoPago.js";
 
 Usuario.hasMany(Invitacion,{
     foreignKey: 'id_usuario'
@@ -88,7 +90,25 @@ Compra.hasOne(CuponDescuento, {
 
 CuponDescuento.belongsTo(Compra,{ 
     foreignKey: 'id_compra'
-})
+});
+
+// Relaciones para MetodoEnvio
+Compra.belongsTo(MetodoEnvio, {
+    foreignKey: 'id_metodo_envio'
+});
+
+MetodoEnvio.hasMany(Compra, {
+    foreignKey: 'id_metodo_envio'
+});
+
+// Relaciones para MetodoPago
+Compra.belongsTo(MetodoPago, {
+    foreignKey: 'id_metodo_pago'
+});
+
+MetodoPago.hasMany(Compra, {
+    foreignKey: 'id_metodo_pago'
+});
 
 export{
     sequelize,
@@ -101,5 +121,7 @@ export{
     Categoria,
     Administrador,
     CuponDescuento,
-    Mensaje
+    Mensaje,
+    MetodoEnvio,
+    MetodoPago
 }

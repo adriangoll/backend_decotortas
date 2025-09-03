@@ -11,6 +11,8 @@ import productoRoute from'./src/routes/producto.routes.js';
 import usuarioRoute from'./src/routes/usuario.routes.js';
 import cuponDescuento from './src/routes/cuponDescuento.routes.js';
 import mensajeRoute from './src/routes/mensaje.routes.js';
+import metodoEnvioRoute from './src/routes/metodoEnvio.routes.js';
+import metodoPagoRoute from './src/routes/metodoPago.routes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -37,6 +39,8 @@ app.use('/api/producto', productoRoute);
 app.use('/api/usuario', usuarioRoute);
 app.use('/api/cupones', cuponDescuento);
 app.use('/api/mensajes', mensajeRoute);
+app.use('/api/metodos-envio', metodoEnvioRoute);
+app.use('/api/metodos-pago', metodoPagoRoute);
 
 //Iniciar servidor y probar coneccion DB
 
@@ -59,4 +63,3 @@ async function starServer() {
 }
 
 starServer()
-
