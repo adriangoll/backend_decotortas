@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors'
 import sequelize from './src/db/connection.js';
 import administradorRoute from'./src/routes/administrador.routes.js';
 import carritoRoute from'./src/routes/carrito.routes.js';
@@ -13,7 +14,10 @@ import mensajeRoute from './src/routes/mensaje.routes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+const allowedOrigins = ["http://localhost:5173", "http://localhost:3000",  "http://localhost:3307"];
+app.use(cors({
+    origin: allowedOrigins
+}));
 app.use(express.json());
 
 //Ruta de prueba
